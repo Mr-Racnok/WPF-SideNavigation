@@ -1,0 +1,160 @@
+﻿<Window x:Class="MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SideNavigation"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        mc:Ignorable="d"
+        Title="Warehouse System" Height="700" MinHeight="700" Width="1350" MinWidth="1350" WindowStyle="None"
+        WindowStartupLocation="CenterScreen" AllowsTransparency="True" Background="Transparent">
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0" ResizeBorderThickness="5"/>
+    </WindowChrome.WindowChrome>
+
+    <Border CornerRadius="6" Background="#ffffff" MouseDown="Border_MouseDown" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <!-- HEADER -->
+            <Border CornerRadius="6" Background="#ffffff" Grid.ColumnSpan="2"/>
+            <ui:SymbolIcon 
+                Symbol="Home24"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Margin="15 0 0 2">
+            </ui:SymbolIcon>
+            <TextBlock 
+                Name="AppTitle"
+                Grid.ColumnSpan="2"
+                Text="Your App Name"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Margin="55 0 0 2"
+                FontWeight="SemiBold">
+            </TextBlock>
+            <ui:Button
+                Grid.ColumnSpan="2"
+                HorizontalAlignment="Right"
+                Appearance="Transparent"
+                BorderThickness="0"
+                Cursor="Hand"
+                VerticalAlignment="Center"
+                Margin="0 0 10 2">
+                <ui:SymbolIcon Symbol="Dismiss24"/>
+            </ui:Button>
+            <!-- HEADER -->
+
+            <!-- SIDE NAVIGATION -->
+            <ui:NavigationView IsBackButtonVisible="Collapsed" Grid.Row="1" Grid.Column="0" Name="SideNavigation" IsPaneOpen="False">
+                <ui:NavigationView.MenuItems>
+                    <ui:AutoSuggestBox x:Name="SearchBar" PlaceholderText="Search..." Margin="35 0 25 10">
+
+                    </ui:AutoSuggestBox>
+                    <ui:NavigationViewItem x:Name="Dashboard" Content="Dashboard">
+                        <ui:NavigationViewItem.Icon>
+                            <ui:SymbolIcon Symbol="GanttChart24" />
+                        </ui:NavigationViewItem.Icon>
+                    </ui:NavigationViewItem>
+
+                    <ui:NavigationViewItemSeparator />
+                    <!-- 1 Menu -->    
+                    <ui:NavigationViewItem x:Name="_1Parent" Content="Parent" >
+                        <ui:NavigationViewItem.Icon>
+                            <ui:SymbolIcon Symbol="Alert24" />
+                        </ui:NavigationViewItem.Icon>
+                        <ui:NavigationViewItem.MenuItems>
+                            <ui:NavigationViewItem x:Name="_1Child" Content="Child" >
+                                <ui:NavigationViewItem.MenuItems>
+                                    <ui:NavigationViewItem Content="Grading Kasar">
+                                    </ui:NavigationViewItem>
+                                </ui:NavigationViewItem.MenuItems>
+                            </ui:NavigationViewItem>
+                        </ui:NavigationViewItem.MenuItems>
+                    </ui:NavigationViewItem>
+                    <!-- 1 Menu -->
+                    <!-- 2 Menus -->
+                    <ui:NavigationViewItem x:Name="_2Grandparent" Content="Grandparent" Margin="0 10 0 0">
+                        <ui:NavigationViewItem.Icon>
+                            <ui:SymbolIcon Symbol="AirplaneLanding24" />
+                        </ui:NavigationViewItem.Icon>
+                        <ui:NavigationViewItem.MenuItems>
+                            <StackPanel>
+                                <ui:NavigationView IsBackButtonVisible="Collapsed" IsPaneToggleVisible="False" Margin="-4 0 0 0">
+                                    <ui:NavigationView.MenuItems>
+                                        <ui:NavigationViewItem x:Name="_2Parent" Content="● Parent">
+                                            <ui:NavigationViewItem.MenuItems>
+                                                <ui:NavigationViewItem x:Name="_2Child" Content="Child"  Margin="20 0 0 0">
+
+                                                </ui:NavigationViewItem>
+                                            </ui:NavigationViewItem.MenuItems>
+                                        </ui:NavigationViewItem>
+                                    </ui:NavigationView.MenuItems>
+                                </ui:NavigationView>
+                            </StackPanel>
+                        </ui:NavigationViewItem.MenuItems>
+                    </ui:NavigationViewItem>
+                    <!-- 2 Menus -->
+                    <!-- 3 Menus -->
+                    <ui:NavigationViewItem x:Name="_3GreatGrandparent" Content="Great-Grandparent" Margin="0 10 0 0">
+                        <ui:NavigationViewItem.Icon>
+                            <ui:SymbolIcon Symbol="AnimalCat24" />
+                        </ui:NavigationViewItem.Icon>
+                        <ui:NavigationViewItem.MenuItems>
+                            <StackPanel>
+                                <ui:NavigationView IsBackButtonVisible="Collapsed" IsPaneToggleVisible="False" Margin="-4 0 0 0">
+                                    <ui:NavigationView.MenuItems>
+                                        <ui:NavigationViewItem x:Name="_3Grandparent" Content="Grandparent">
+                                            <ui:NavigationViewItem.MenuItems>
+                                                <StackPanel>
+                                                    <ui:NavigationView IsBackButtonVisible="Collapsed" IsPaneToggleVisible="False" Margin="-4 0 0 0">
+                                                        <ui:NavigationView.MenuItems>
+                                                            <ui:NavigationViewItem x:Name="_3Parent" Content="● Parent" >
+                                                                <ui:NavigationViewItem.MenuItems>
+                                                                    <ui:NavigationViewItem x:Name="_3Child" Content="Child" Margin="20 0 0 0">
+
+                                                                    </ui:NavigationViewItem>
+                                                                </ui:NavigationViewItem.MenuItems>
+                                                            </ui:NavigationViewItem>
+                                                        </ui:NavigationView.MenuItems>
+                                                    </ui:NavigationView>
+                                                </StackPanel>
+                                            </ui:NavigationViewItem.MenuItems>
+                                        </ui:NavigationViewItem>
+                                    </ui:NavigationView.MenuItems>
+                                </ui:NavigationView>
+                            </StackPanel>
+                        </ui:NavigationViewItem.MenuItems>
+                    </ui:NavigationViewItem>
+                    <!-- 3 Menus -->
+                </ui:NavigationView.MenuItems>
+
+
+                <!-- FOOTER SIDEBAR -->
+                <ui:NavigationView.FooterMenuItems>
+                    <Label Content="118070006" Visibility="Hidden"/>
+                    <ui:NavigationViewItem x:Name="UserSettings" Content="User Settings" >
+                        <ui:NavigationViewItem.Icon>
+                            <ui:SymbolIcon Symbol="PersonKey20"/>
+                        </ui:NavigationViewItem.Icon>
+                    </ui:NavigationViewItem>
+
+                </ui:NavigationView.FooterMenuItems>
+                <!-- FOOTER SIDEBAR -->
+            </ui:NavigationView>
+            <!-- SIDE NAVIGATION -->
+
+            <Frame Name="FrameContent" Background="#D6D6D6" Grid.Row="1" Grid.Column="1"  Grid.ColumnSpan="2">
+
+            </Frame>
+        </Grid>
+    </Border>
+</Window>
